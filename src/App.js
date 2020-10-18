@@ -3,20 +3,15 @@ import logo from './logo.svg';
 import './App.css';
 
 import { useWeb3 } from '@openzeppelin/network/react';
+import Web3Data from './components/Web3Data.js';
 const secrets = require('./secrets.json')
 
 function App() {
   const web3Context = useWeb3(`wss://mainnet.infura.io/ws/v3/${secrets.infuraProjectId}`);
-  const { networkId, networkName, providerName} = web3Context;
   return (
     <div className="App">
-      <h1>Inufra/Metamask/Openzeppelin</h1>
-      <div>
-        Network: {networkId ? `${networkId} - ${networkName}`: 'No active connection'}
-      </div>
-      <div>
-        Provider: {providerName}
-      </div>
+      <h1>Inufra React Dapp with Components</h1>
+      <Web3Data title="Web3 Data" web3Context={web3Context} />
     </div>
   );
 }
